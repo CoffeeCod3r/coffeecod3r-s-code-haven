@@ -12,9 +12,10 @@ const brewingCards = [
 const timeline = [
   { year: "2012", text: "First line of code. Age 12. Pure curiosity." },
   { year: "2018", text: "Started taking it seriously. JS clicked." },
+  { year: "2020", text: "Started technikum programistyczne. Let's go." },
   { year: "2022", text: "First real project shipped." },
-  { year: "2023", text: "Passed INF.03 & INF.04. Official now." },
-  { year: "2024", text: "Full-stack + mobile. No plans to stop." },
+  { year: "2024", text: "Passed INF.03 ✓ · First professional internship completed." },
+  { year: "2026", text: "Passed INF.04 ✓ · Second internship done. Full-stack + mobile. No plans to stop." },
 ];
 
 const fadeUp = {
@@ -59,8 +60,9 @@ const About = () => (
           </motion.h2>
           <motion.p {...fadeUp} transition={{ delay: 0.2 }} className="text-muted-foreground leading-relaxed mb-4">
             It started when I was 12 — pure curiosity, a YouTube tutorial, and a broken calculator app.
-            Now I'm 19, building full-stack web apps and mobile apps. I graduated as a Technik Programista
-            and passed both the INF.03 and INF.04 exams in Poland.
+            Now I'm 19, building full-stack web apps and mobile apps. I started technikum programistyczne
+            in 2020, passed INF.03 in 2024 and INF.04 in 2026, and completed two professional internships
+            (2024 & 2026).
           </motion.p>
           <motion.p {...fadeUp} transition={{ delay: 0.3 }} className="text-muted-foreground leading-relaxed">
             I code from pure passion, not for money. The moment something finally clicks after hours of
