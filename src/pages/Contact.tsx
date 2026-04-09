@@ -7,7 +7,7 @@ const contactLinks = [
   {
     icon: "✉",
     label: "Email",
-    value: "coffeecod3r@example.com",
+    value: "coffee.cod3r.business@gmail.com",
     action: "copy",
   },
   {
@@ -55,7 +55,9 @@ const Contact = () => {
     <PageTransition>
       <div
         className="transition-colors duration-500"
-        style={{ backgroundColor: amberFlash ? "hsl(25, 52%, 15%)" : "transparent" }}
+        style={{
+          backgroundColor: amberFlash ? "hsl(25, 52%, 15%)" : "transparent",
+        }}
       >
         <section className="pt-28 pb-20 px-6 max-w-xl mx-auto min-h-screen">
           <motion.h1
@@ -71,7 +73,8 @@ const Contact = () => {
             transition={{ delay: 0.2 }}
             className="text-muted-foreground text-center mb-12"
           >
-            Or just want to talk about code, cats, or coffee. I respond. Eventually.
+            Or just want to talk about code, cats, or coffee. I respond.
+            Eventually.
           </motion.p>
 
           <div className="space-y-4">
@@ -89,8 +92,12 @@ const Contact = () => {
                   >
                     <span className="text-xl w-8">{link.icon}</span>
                     <div>
-                      <p className="font-mono text-sm text-muted-foreground">{link.label}</p>
-                      <p className="font-mono text-foreground group-hover:text-primary transition-colors">{link.value}</p>
+                      <p className="font-mono text-sm text-muted-foreground">
+                        {link.label}
+                      </p>
+                      <p className="font-mono text-foreground group-hover:text-primary transition-colors">
+                        {link.value}
+                      </p>
                     </div>
                   </button>
                 ) : (
@@ -100,10 +107,16 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     className="block bg-card border-l-4 border-primary rounded-lg p-5 flex items-center gap-4 hover:bg-primary/10 transition-colors group"
                   >
-                    <span className="text-xl w-8 font-mono font-bold">{link.icon}</span>
+                    <span className="text-xl w-8 font-mono font-bold">
+                      {link.icon}
+                    </span>
                     <div>
-                      <p className="font-mono text-sm text-muted-foreground">{link.label}</p>
-                      <p className="font-mono text-foreground group-hover:text-primary transition-colors">{link.value}</p>
+                      <p className="font-mono text-sm text-muted-foreground">
+                        {link.label}
+                      </p>
+                      <p className="font-mono text-foreground group-hover:text-primary transition-colors">
+                        {link.value}
+                      </p>
                     </div>
                   </a>
                 )}
@@ -119,7 +132,9 @@ const Contact = () => {
             className="flex items-center justify-center gap-2 mt-10"
           >
             <span className="w-2.5 h-2.5 rounded-full bg-terminal-green animate-pulse" />
-            <span className="font-mono text-sm text-foreground">Open to interesting projects & collaborations</span>
+            <span className="font-mono text-sm text-foreground">
+              Open to interesting projects & collaborations
+            </span>
           </motion.div>
 
           <motion.p
