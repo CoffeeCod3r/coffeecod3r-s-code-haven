@@ -34,8 +34,11 @@ const Contact = () => {
       setBuffer(next);
       if (next === "coffee") {
         setAmberFlash(true);
-        toast("☕ Good taste.");
+        toast("☕ Good taste. You passed the vibe check.");
         setTimeout(() => setAmberFlash(false), 600);
+        setBuffer("");
+      } else if (next.endsWith("debug")) {
+        toast("console.log('help') — classic.");
         setBuffer("");
       }
     };
@@ -45,7 +48,7 @@ const Contact = () => {
 
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text);
-    toast("Copied to clipboard!");
+    toast("Copied! ☕");
   };
 
   return (
@@ -68,7 +71,7 @@ const Contact = () => {
             transition={{ delay: 0.2 }}
             className="text-muted-foreground text-center mb-12"
           >
-            Or just want to talk about code, cats, or coffee.
+            Or just want to talk about code, cats, or coffee. I respond. Eventually.
           </motion.p>
 
           <div className="space-y-4">
@@ -108,13 +111,24 @@ const Contact = () => {
             ))}
           </div>
 
+          {/* Availability badge */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+            className="flex items-center justify-center gap-2 mt-10"
+          >
+            <span className="w-2.5 h-2.5 rounded-full bg-terminal-green animate-pulse" />
+            <span className="font-mono text-sm text-foreground">Open to interesting projects & collaborations</span>
+          </motion.div>
+
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
-            className="text-muted-foreground text-center text-sm mt-12 font-mono"
+            className="text-muted-foreground text-center text-sm mt-8 font-mono"
           >
-            I'm a student, not an agency. Response time: somewhere between 2 hours and 2 days.
+            19 y/o dev, not an agency. INF.03 ✓ INF.04 ✓ · Response: 2hrs–2days.
           </motion.p>
         </section>
       </div>

@@ -1,19 +1,20 @@
 import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 
-const stacks = ["HTML", "CSS", "JavaScript", "React", "Node.js", "Express", "Git"];
+const stacks = ["HTML", "CSS", "JavaScript", "React", "Node.js", "Express", "React Native", "Git", "REST APIs"];
 
 const brewingCards = [
-  { label: "Learning", value: "Three.js & WebGL" },
-  { label: "Building", value: "SpotiSort v2.0" },
+  { label: "Learning", value: "React Native advanced" },
+  { label: "Building", value: "SpotiSort v2" },
   { label: "Reading", value: "You Don't Know JS" },
 ];
 
 const timeline = [
-  { year: "2022", text: "First HTML page. It was ugly. I loved it." },
-  { year: "2023", text: "Discovered JavaScript. Broke everything." },
-  { year: "2024", text: "Built first full-stack app. Backend clicked." },
-  { year: "2025", text: "Technik Programista diploma. Still breaking things." },
+  { year: "2012", text: "First line of code. Age 12. Pure curiosity." },
+  { year: "2018", text: "Started taking it seriously. JS clicked." },
+  { year: "2022", text: "First real project shipped." },
+  { year: "2023", text: "Passed INF.03 & INF.04. Official now." },
+  { year: "2024", text: "Full-stack + mobile. No plans to stop." },
 ];
 
 const fadeUp = {
@@ -54,18 +55,16 @@ const About = () => (
             {">"} about_me.txt
           </motion.p>
           <motion.h2 {...fadeUp} transition={{ delay: 0.1 }} className="text-3xl lg:text-4xl text-foreground mb-6">
-            Just a kid who got obsessed with coding
+            7 years ago I wrote my first line of code. I haven't stopped since.
           </motion.h2>
           <motion.p {...fadeUp} transition={{ delay: 0.2 }} className="text-muted-foreground leading-relaxed mb-4">
-            It started with a YouTube tutorial and a broken calculator app.
-            Now I'm building full-stack applications that actually do something useful.
-            I'm a high school student (Technik Programista) who treats coding as a hobby
-            that got out of hand — and I wouldn't change that for anything.
+            It started when I was 12 — pure curiosity, a YouTube tutorial, and a broken calculator app.
+            Now I'm 19, building full-stack web apps and mobile apps. I graduated as a Technik Programista
+            and passed both the INF.03 and INF.04 exams in Poland.
           </motion.p>
           <motion.p {...fadeUp} transition={{ delay: 0.3 }} className="text-muted-foreground leading-relaxed">
-            I love challenges that feel impossible at first.
-            The moment something finally works after hours of debugging?
-            That's why I do this.
+            I code from pure passion, not for money. The moment something finally clicks after hours of
+            debugging? That's the feeling I chase. Web, mobile, backend — I want to build it all.
           </motion.p>
         </div>
       </div>
@@ -88,7 +87,7 @@ const About = () => (
 
       {/* Timeline */}
       <motion.div {...fadeUp}>
-        <h3 className="text-2xl text-foreground mb-10">How it started</h3>
+        <h3 className="text-2xl text-foreground mb-10">The journey</h3>
         <div className="relative pl-8 border-l border-border/40 space-y-10">
           {timeline.map((item, i) => (
             <motion.div
