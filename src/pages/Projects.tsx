@@ -5,10 +5,10 @@ const projects = [
   {
     emoji: "🎵",
     title: "SpotiSort",
-    tags: ["Spotify API", "React", "Node.js"],
+    tags: ["Spotify API", "React", "Node.js", "Express"],
     problem: "You have 47 playlists and zero idea what's in them.",
     description:
-      "A web app that connects to your Spotify account and lets you sort, filter, merge and organize your playlists. Drag & drop interface, smart deduplication, mood-based sorting.",
+      "Connect your Spotify, sort/filter/merge playlists, drag & drop reorder, smart deduplication, mood-based grouping.",
     demo: "#",
     github: "#",
     dimmed: false,
@@ -16,19 +16,31 @@ const projects = [
   {
     emoji: "🐱",
     title: "CatBreedDetector",
-    tags: ["Cat API", "React", "Machine Learning API"],
-    problem: "What breed is my cat? Now you can find out in 3 seconds.",
+    tags: ["Cat API", "React", "ML Image API"],
+    problem: "What breed is my cat? Took me 3 days to find out. Now it takes 3 seconds.",
     description:
-      "Upload a photo of any cat and the app identifies the breed using an image recognition API. Shows breed info, temperament, fun facts. Built because I was genuinely curious what breed my cat is.",
+      "Upload any cat photo → AI identifies breed, shows temperament, fun facts, care tips.",
     demo: "#",
     github: "#",
     dimmed: false,
   },
   {
+    emoji: "📱",
+    title: "Mobile App",
+    tags: ["React Native", "Expo", "in progress"],
+    problem: "Something that needed to exist on your phone.",
+    description:
+      "A mobile app currently in development. React Native. Details coming soon.",
+    demo: "",
+    github: "",
+    dimmed: false,
+    opacity: 0.7,
+  },
+  {
     emoji: "☕",
     title: "???",
-    tags: ["in progress"],
-    problem: "Something is being built... ☕",
+    tags: ["cooking..."],
+    problem: "The idea is good. The code is almost there.",
     description: "",
     demo: "",
     github: "",
@@ -38,7 +50,7 @@ const projects = [
 
 const Projects = () => (
   <PageTransition>
-    <section className="pt-28 pb-20 px-6 max-w-4xl mx-auto">
+    <section className="pt-28 pb-20 px-6 max-w-5xl mx-auto">
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -63,21 +75,20 @@ const Projects = () => (
         Real problems. Real code. Real coffee consumed.
       </motion.p>
 
-      <div className="space-y-8">
+      <div className="grid md:grid-cols-2 gap-8">
         {projects.map((p, i) => (
           <motion.div
             key={p.title}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.15, duration: 0.5 }}
-            className={`bg-card border-l-4 border-primary rounded-lg p-8 transition-transform hover:-translate-y-1 ${
-              p.dimmed ? "opacity-50" : ""
-            }`}
+            transition={{ delay: i * 0.12, duration: 0.5 }}
+            className="bg-card border-l-4 border-primary rounded-lg p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_8px_30px_hsl(var(--primary)/0.15)]"
+            style={{ opacity: p.opacity ?? (p.dimmed ? 0.5 : 1) }}
           >
             <div className="flex flex-wrap gap-2 mb-4">
               {p.tags.map((t) => (
-                <span key={t} className="font-mono text-xs px-3 py-1 bg-surface text-muted-foreground rounded-full">
+                <span key={t} className="font-mono text-xs px-3 py-1 border border-primary/30 text-muted-foreground rounded-full">
                   {t}
                 </span>
               ))}
@@ -88,13 +99,13 @@ const Projects = () => (
             </div>
             <p className="font-display italic text-primary text-lg mb-3">{p.problem}</p>
             {p.description && <p className="text-muted-foreground mb-6">{p.description}</p>}
-            {!p.dimmed && (
+            {!p.dimmed && p.demo !== "" && (
               <div className="flex gap-4">
-                <a href={p.demo} className="font-mono text-sm text-primary border border-primary/40 px-4 py-2 rounded-md hover:scale-[1.03] transition-transform">
-                  Live demo →
+                <a href={p.demo} target="_blank" rel="noopener noreferrer" className="font-mono text-sm bg-primary text-primary-foreground px-4 py-2 rounded-md hover:scale-[1.03] transition-transform">
+                  Live Demo ↗
                 </a>
-                <a href={p.github} className="font-mono text-sm text-muted-foreground border border-border px-4 py-2 rounded-md hover:scale-[1.03] transition-transform">
-                  GitHub →
+                <a href={p.github} target="_blank" rel="noopener noreferrer" className="font-mono text-sm text-muted-foreground border border-border px-4 py-2 rounded-md hover:scale-[1.03] transition-transform">
+                  GitHub ↗
                 </a>
               </div>
             )}

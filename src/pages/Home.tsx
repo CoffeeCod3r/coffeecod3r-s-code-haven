@@ -1,11 +1,44 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
 import PageTransition from "@/components/PageTransition";
 import CoffeeScene from "@/components/CoffeeScene";
 import Ticker from "@/components/Ticker";
 
 const typewriterText = "> hello_world.js";
+
+const stats = [
+  { value: 7, label: "years coding", suffix: "" },
+  { value: 2, label: "years building real projects", suffix: "" },
+  { value: 2, label: "certified (INF.03 + INF.04)", suffix: "" },
+  { value: null, label: "coffees consumed", suffix: "", display: "∞" },
+];
+
+const CountUp = ({ target, display }: { target: number | null; display?: string }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true });
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!inView || target === null) return;
+    let frame: number;
+    const duration = 1500;
+    const start = performance.now();
+    const animate = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      setCount(Math.floor(progress * target));
+      if (progress < 1) frame = requestAnimationFrame(animate);
+    };
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
+  }, [inView, target]);
+
+  return (
+    <span ref={ref} className="text-4xl lg:text-5xl font-bold text-primary">
+      {display ?? count}
+    </span>
+  );
+};
 
 const Home = () => {
   const [displayed, setDisplayed] = useState("");
@@ -53,7 +86,7 @@ const Home = () => {
               transition={{ delay: 0.6, duration: 0.5 }}
               className="text-muted-foreground text-lg mt-6 max-w-lg"
             >
-              16 y/o dev. I build things that solve real problems and break my sleep schedule.
+              19 y/o dev. 7 years of coding. Still the most fun thing I know.
             </motion.p>
 
             <motion.div
@@ -90,6 +123,25 @@ const Home = () => {
       </section>
 
       <Ticker />
+
+      {/* Stats bar */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.4 }}
+              className="bg-card border-t-2 border-primary rounded-lg p-6 text-center"
+            >
+              <CountUp target={stat.value} display={stat.display} />
+              <p className="font-mono text-xs text-muted-foreground mt-2 uppercase">{stat.label}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
     </PageTransition>
   );
 };

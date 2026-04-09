@@ -37,12 +37,18 @@ const App = () => {
 
   return (
     <div className="grain">
+      {/* Ambient glow blobs */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px]" />
+        <div className="absolute -bottom-32 -right-32 w-[400px] h-[400px] rounded-full bg-terminal-green/5 blur-[120px]" />
+        <div className="absolute top-1/2 right-0 w-[300px] h-[300px] rounded-full bg-primary/3 blur-[100px]" />
+      </div>
       <CustomCursor />
       <Sonner />
       <BrowserRouter>
         {loading && <LoadingScreen />}
         <Navbar />
-        <main className="min-h-screen">
+        <main className="relative z-10 min-h-screen">
           <AnimatedRoutes />
         </main>
         <Footer />

@@ -1,4 +1,4 @@
-const items = "FRONTEND · BACKEND · REACT · NODE.JS · PROBLEM SOLVER · COFFEE ADDICT · ";
+const items = "WEB DEV · MOBILE APPS · REACT · NODE.JS · INF.03 ✓ · INF.04 ✓ · COFFEE ADDICT · REACT NATIVE · ";
 const repeated = items.repeat(4);
 
 const Ticker = () => (
